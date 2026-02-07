@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Form } from "./Form";
+import { Logo } from "./Logo";
+import { Tracker } from "./Tracker";
 
-function App() {
+export const initialMonsters = [
+  {
+    name: "Bandit",
+    init: "15",
+    hp: "35",
+    id: 1,
+  },
+  {
+    name: "Pirate",
+    init: "12",
+    hp: "76",
+    id: 2,
+  },
+  {
+    name: "Dragon",
+    init: "21",
+    hp: "166",
+    id: 3,
+  },
+];
+
+export default function App() {
+  const [monsters, setMonsters] = useState(initialMonsters);
+
+  function handleAddMonster(monster) {
+    setMonsters(() => [...monsters, monster]);
+  }
+
+  function handleDeleteMonster(id) {
+    setMonsters((monsters) => monsters.filter((monster) => monster.id !== id));
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Logo />
+      <Form onAddMonster={handleAddMonster} />
+      <Tracker monsters={monsters} onDeleteMonster={handleDeleteMonster} />
     </div>
   );
 }
-
-export default App;

@@ -38,3 +38,10 @@ code {
 .input-calc {
   width: 40px;
 }
+
+.monster-row {
+  display: grid;
+  grid-template-columns: 32px 140px 140px auto;
+  gap: 8px;
+  align-items: center;
+}

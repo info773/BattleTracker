@@ -27,6 +27,15 @@ export const initialMonsters = [
 export default function App() {
   const [monsters, setMonsters] = useState(initialMonsters);
 
+  function handleChangeMonster(id, prop, content) {
+    // setItems(items.map(a => (a.id === 2 ? {...a, data: "c"} : a)))
+    setMonsters((monsters) =>
+      monsters.map((monster) =>
+        monster.id === id ? { ...monster, [prop]: content } : monster,
+      ),
+    );
+  }
+
   function handleAddMonster(monster) {
     setMonsters(() => [...monsters, monster]);
   }
@@ -35,11 +44,26 @@ export default function App() {
     setMonsters((monsters) => monsters.filter((monster) => monster.id !== id));
   }
 
+  function handleCalcHp(id, val) {
+    setMonsters((monsters) =>
+      monsters.map((monster) =>
+        monster.id === id
+          ? { ...monster, hp: Number(monster.hp) + Number(val) }
+          : monster,
+      ),
+    );
+  }
+
   return (
     <div>
       <Logo />
       <Form onAddMonster={handleAddMonster} />
-      <Tracker monsters={monsters} onDeleteMonster={handleDeleteMonster} />
+      <Tracker
+        monsters={monsters}
+        onDeleteMonster={handleDeleteMonster}
+        onChangeMonster={handleChangeMonster}
+        onCalcHp={handleCalcHp}
+      />
     </div>
   );
 }

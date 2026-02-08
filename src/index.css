@@ -27,3 +27,14 @@ code {
   display: flex;
   gap: 10px;
 }
+.tracker-main {
+  margin: 50px;
+}
+
+.tracker-monster {
+  margin-top: 20px;
+}
+
+.input-calc {
+  width: 40px;
+}

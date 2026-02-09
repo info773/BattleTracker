@@ -24,13 +24,14 @@ export function Tracker({
   }
 
   return (
-    <div
-      className="tracker-main"
-      onChange={(e) => setSortFiler(e.target.value)}
-    >
+    <div className="tracker-main">
       {!isEmpty ? (
         <>
-          <select value={sortFilter} className="sort-filter">
+          <select
+            value={sortFilter}
+            className="sort-filter"
+            onChange={(e) => setSortFiler(e.target.value)}
+          >
             <option value="desc">Descending</option>
             <option value="asc">Ascending</option>
             <option value="name-az">By name (A-Z)</option>

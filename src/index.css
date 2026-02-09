@@ -29,6 +29,7 @@ code {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex: 0 0 auto;
 }
 .tracker-main {
   margin: 50px;
@@ -102,4 +103,45 @@ code {
 
 .btn-choice button {
   width: 75px;
+}
+
+.notes {
+  width: 365px;
+  height: 90px;
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: top;
+  resize: vertical;
+}
+
+.checkboxes {
+  width: 700px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.status-list {
+  max-width: 500px; /* cap it */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.first-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-reset-status {
+  flex: 0 0 auto;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.more-info {
+  margin: 10px 40px;
 }

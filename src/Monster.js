@@ -7,6 +7,7 @@ export function Monster({
   onCalcHp,
 }) {
   const [calcVal, setCalcVal] = useState("0");
+  const [selected, setSelected] = useState("monster");
 
   const isDead = monster.hp <= 0;
   return (

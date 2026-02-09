@@ -20,11 +20,14 @@ code {
 
 .form {
   display: flex;
-  justify-content: center;
+  flex-flow: column;
+  gap: 10px;
+  margin-left: 47px;
 }
 
 .monster {
   display: flex;
+  align-items: center;
   gap: 10px;
 }
 .tracker-main {
@@ -41,7 +44,48 @@ code {
 
 .monster-row {
   display: grid;
-  grid-template-columns: 32px 140px 140px auto;
+  grid-template-columns: 37px 142px 146px auto;
   gap: 8px;
   align-items: center;
+}
+
+.form-monster .input-name {
+  width: 110px;
+}
+
+.form-monster .input-init {
+  width: 110px;
+}
+
+.form-monster .input-hp {
+  width: 110px;
+}
+
+.form-player .input-name {
+  width: 168px;
+}
+
+.form-player .input-init {
+  width: 168px;
+}
+
+.monster-input input {
+  width: 120px;
+  border-width: 1px;
+  border-radius: 5px;
+  margin-right: 2px;
+}
+
+.player-input input {
+  width: 120px;
+  background-color: rgb(225, 243, 216);
+  border-width: 1px;
+  border-radius: 5px;
+  margin-right: 2px;
+}
+
+.btn-delete {
+  border-width: 1px;
+  border-radius: 36%;
+  margin: 2px;
 }

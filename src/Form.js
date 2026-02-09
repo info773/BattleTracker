@@ -1,57 +1,105 @@
 import { useState } from "react";
 
 export function Form({ onAddMonster }) {
-  const [name, setName] = useState("");
-  const [init, setInit] = useState("");
-  const [hp, setHp] = useState("");
+  const [nameMonster, setNameMonster] = useState("");
+  const [initMonster, setInitMonster] = useState("");
+  const [hpMonster, setHpMonster] = useState("");
 
-  function handleSubmit(e) {
+  const [namePlayer, setNamePlayer] = useState("");
+  const [initPlayer, setInitPlayer] = useState("");
+
+  function handleSubmitMonster(e) {
     e.preventDefault();
 
-    if (!name.trim() || !init.trim() || !hp.trim())
+    if (!nameMonster.trim() || !initMonster.trim() || !hpMonster.trim())
       return alert("Every input must be filled!");
 
-    if (!Number.isFinite(Number(init)))
+    if (!Number.isFinite(Number(initMonster)))
       return alert("Initative must be a number!");
 
-    if (!Number.isFinite(Number(hp)))
+    if (!Number.isFinite(Number(hpMonster)))
       return alert("Hitpoints must be a number!");
 
     const id = crypto.randomUUID();
     const newMonster = {
-      name: name,
-      init: Number(init),
-      hp: Number(hp),
+      name: nameMonster,
+      init: Number(initMonster),
+      hp: Number(hpMonster),
+      isPlayer: false,
       id: id,
     };
 
     onAddMonster(newMonster);
-    setName("");
-    setInit("");
-    setHp("");
+    setNameMonster("");
+    setInitMonster("");
+    setHpMonster("");
+  }
+
+  function handleSubmitPlayer(e) {
+    e.preventDefault();
+
+    if (!namePlayer.trim() || !initPlayer.trim())
+      return alert("Every input must be filled!");
+
+    if (!Number.isFinite(Number(initMonster)))
+      return alert("Initative must be a number!");
+
+    const id = crypto.randomUUID();
+    const newPlayer = {
+      name: namePlayer,
+      init: Number(initPlayer),
+      hp: 1,
+      isPlayer: true,
+      id: id,
+    };
+
+    onAddMonster(newPlayer);
+    setNamePlayer("");
+    setInitPlayer("");
   }
 
   return (
     <div className="form">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmitMonster} className="form-monster">
         <input
           type="text"
-          placeholder="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          placeholder="monster name"
+          value={nameMonster}
+          onChange={(e) => setNameMonster(e.target.value)}
+          className="input-name"
         />
         <input
           type="text"
-          placeholder="initiative"
-          value={init}
-          onChange={(e) => setInit(e.target.value)}
+          placeholder="monster initiative"
+          value={initMonster}
+          onChange={(e) => setInitMonster(e.target.value)}
+          className="input-init"
         />
         <input
           type="text"
-          placeholder="hitpoints"
-          value={hp}
-          onChange={(e) => setHp(e.target.value)}
+          placeholder="monster hitpoints"
+          value={hpMonster}
+          onChange={(e) => setHpMonster(e.target.value)}
+          className="input-hp"
         />
+        <button>Add</button>
+      </form>
+      <form onSubmit={handleSubmitPlayer} className="form-player">
+        <input
+          type="text"
+          placeholder="player name"
+          value={namePlayer}
+          onChange={(e) => setNamePlayer(e.target.value)}
+          className="input-name"
+        />
+        <input
+          type="text"
+          placeholder="player initiative"
+          value={initPlayer}
+          onChange={(e) => setInitPlayer(e.target.value)}
+          className="input-init"
+        />
+
         <button>Add</button>
       </form>
     </div>

@@ -8,18 +8,21 @@ export const initialMonsters = [
     name: "Bandit",
     init: "15",
     hp: "35",
+    isPlayer: false,
     id: 1,
   },
   {
     name: "Pirate",
     init: "12",
     hp: "76",
+    isPlayer: false,
     id: 2,
   },
   {
     name: "Dragon",
     init: "21",
     hp: "166",
+    isPlayer: false,
     id: 3,
   },
 ];

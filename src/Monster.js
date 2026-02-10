@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Checkbox } from "./Checkbox";
+import { MonsterAPI } from "./MonsterAPI";
 
 const statusEffects = [
   "Blinded",
@@ -107,7 +108,7 @@ export function Monster({
             </div>
           ) : null}
           <button onClick={() => setNotesActive((notesActive) => !notesActive)}>
-            {notesActive ? "❌" : notes.length === 0 ? "..." : "!!!"}
+            {notesActive ? "⬆" : notes.length === 0 ? "..." : "!!!"}
           </button>
         </div>
         {!statusArr.length ? null : (
@@ -117,32 +118,35 @@ export function Monster({
               className="btn-reset-status"
               onClick={() => setStatusArr([])}
             >
-              x
+              clear
             </button>
           </div>
         )}
       </div>
       {notesActive ? (
-        <div className="more-info">
-          <textarea
-            className="notes"
-            name=""
-            id=""
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-          />
-          <div className="checkboxes">
-            {statusEffects.map((stat) => (
-              <Checkbox
-                status={stat}
-                onAddStatus={handleAddStatus}
-                onDeleteStatus={handleDeleteStatus}
-                statusArr={statusArr}
-                key={stat}
-              />
-            ))}
+        <>
+          <MonsterAPI monsterName={monster.name} />
+          <div className="more-info">
+            <textarea
+              className="notes"
+              name=""
+              id=""
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+            />
+            <div className="checkboxes">
+              {statusEffects.map((stat) => (
+                <Checkbox
+                  status={stat}
+                  onAddStatus={handleAddStatus}
+                  onDeleteStatus={handleDeleteStatus}
+                  statusArr={statusArr}
+                  key={stat}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        </>
       ) : null}
     </div>
   );

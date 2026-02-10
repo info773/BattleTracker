@@ -5,21 +5,21 @@ import { Tracker } from "./Tracker";
 
 export const initialMonsters = [
   {
-    name: "Bandit",
+    name: "bandit",
     init: "15",
     hp: "35",
     isPlayer: false,
     id: 1,
   },
   {
-    name: "Pirate",
+    name: "water-elemental",
     init: "12",
     hp: "76",
     isPlayer: false,
     id: 2,
   },
   {
-    name: "Dragon",
+    name: "adult-bronze-dragon",
     init: "21",
     hp: "166",
     isPlayer: false,

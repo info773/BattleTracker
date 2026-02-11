@@ -33,6 +33,8 @@ export function Monster({
 
   const isDead = monster.hp <= 0;
 
+  const transformedName = monster.name.toLowerCase().split(" ").join("-");
+
   function handleAddStatus(status) {
     setStatusArr((statusArr) => [...statusArr, status]);
   }
@@ -125,7 +127,7 @@ export function Monster({
       </div>
       {notesActive ? (
         <>
-          <MonsterAPI monsterName={monster.name} />
+          <MonsterAPI monsterName={transformedName} />
           <div className="more-info">
             <textarea
               className="notes"

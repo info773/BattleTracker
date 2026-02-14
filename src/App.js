@@ -36,6 +36,41 @@ export const initialMonsters = [
 export default function App() {
   const [monsters, setMonsters] = useState(initialMonsters);
 
+  function handleExport() {
+    const data = JSON.stringify(monsters, null, 2);
+    const blob = new Blob([data], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "monsters.json";
+    a.click();
+
+    URL.revokeObjectURL(url);
+  }
+
+  function handleImport(e) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const parsed = JSON.parse(reader.result);
+        if (!Array.isArray(parsed)) {
+          alert("Invalid JSON: expected an array");
+          return;
+        }
+        setMonsters(parsed);
+      } catch (err) {
+        alert("Invalid JSON file");
+      } finally {
+        e.target.value = "";
+      }
+    };
+    reader.readAsText(file);
+  }
+
   function handleChangeMonster(id, prop, content) {
     // setItems(items.map(a => (a.id === 2 ? {...a, data: "c"} : a)))
     setMonsters((monsters) =>
@@ -64,7 +99,7 @@ export default function App() {
   }
 
   return (
-    <div>
+    <div className="app">
       <Logo />
       <Form onAddMonster={handleAddMonster} />
       <Tracker
@@ -73,6 +108,19 @@ export default function App() {
         onChangeMonster={handleChangeMonster}
         onCalcHp={handleCalcHp}
       />
+      <div className="io-actions io-actions--fixed">
+        <button className="action-btn" onClick={handleExport}>
+          Export
+        </button>
+        <label className="file-input action-btn">
+          <span>Import JSON</span>
+          <input
+            type="file"
+            accept="application/json"
+            onChange={handleImport}
+          />
+        </label>
+      </div>
     </div>
   );
 }

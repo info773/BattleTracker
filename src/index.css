@@ -167,3 +167,45 @@ code {
 .monster-overview {
   margin: 15px 0;
 }
+
+.file-input {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.file-input input {
+  display: none;
+}
+
+.action-btn {
+  padding: 6px 10px;
+  border: 1px solid #7a7a7a;
+  background: #b8b8b8;
+  color: #242424;
+  border-radius: 5px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.io-actions {
+  display: flex;
+  gap: 8px;
+  margin: 24px 50px;
+}
+
+.io-actions--fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px 50px;
+  margin: 0;
+  background: #bdbdbd;
+  border-top: 1px solid #8f8f8f;
+  z-index: 10;
+}
+
+.app {
+  padding-bottom: 72px;
+}

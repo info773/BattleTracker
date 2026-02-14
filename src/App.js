@@ -11,6 +11,7 @@ export const initialMonsters = [
     isPlayer: false,
     id: 1,
     notes: "note-bandit",
+    statuses: [],
   },
   {
     name: "water-elemental",
@@ -19,6 +20,7 @@ export const initialMonsters = [
     isPlayer: false,
     id: 2,
     notes: "note-water elemental",
+    statuses: [],
   },
   {
     name: "adult-bronze-dragon",
@@ -27,6 +29,7 @@ export const initialMonsters = [
     isPlayer: false,
     id: 3,
     notes: "note-dragon",
+    statuses: [],
   },
 ];
 

@@ -1,4 +1,4 @@
-export function Checkbox({ status, onAddStatus, onDeleteStatus, statusArr }) {
+export function Checkbox({ status, onAddStatus, onDeleteStatus, statuses }) {
   return (
     <div>
       <input
@@ -7,7 +7,7 @@ export function Checkbox({ status, onAddStatus, onDeleteStatus, statusArr }) {
           if (e.target.checked) onAddStatus(status);
           if (!e.target.checked) onDeleteStatus(status);
         }}
-        checked={statusArr.includes(status)}
+        checked={statuses.includes(status)}
       />
       <label>{status}</label>
     </div>

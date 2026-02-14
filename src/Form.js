@@ -30,6 +30,7 @@ export function Form({ onAddMonster }) {
       isPlayer: false,
       id: id,
       notes: "",
+      statuses: [],
     };
 
     onAddMonster(newMonster);
@@ -55,6 +56,7 @@ export function Form({ onAddMonster }) {
       isPlayer: true,
       id: id,
       notes: "",
+      statuses: [],
     };
 
     onAddMonster(newPlayer);

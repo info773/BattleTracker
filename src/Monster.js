@@ -28,20 +28,22 @@ export function Monster({
 }) {
   const [calcVal, setCalcVal] = useState("0");
   const [notesActive, setNotesActive] = useState(false);
-  const [statusArr, setStatusArr] = useState([]);
 
   const isDead = monster.hp <= 0;
 
   const transformedName = monster.name.toLowerCase().split(" ").join("-");
 
   function handleAddStatus(status) {
-    setStatusArr((statusArr) => [...statusArr, status]);
+    const next = monster.statuses.includes(status)
+      ? monster.statuses
+      : [...monster.statuses, status];
+
+    onChangeMonster(monster.id, "statuses", next);
   }
 
   function handleDeleteStatus(status) {
-    setStatusArr((statusArr) =>
-      statusArr.filter((element) => element !== status),
-    );
+    const next = monster.statuses.filter((s) => s !== status);
+    onChangeMonster(monster.id, "statuses", next);
   }
 
   return (
@@ -112,12 +114,12 @@ export function Monster({
             {notesActive ? "⬆" : monster.notes.length === 0 ? "..." : "!!!"}
           </button>
         </div>
-        {!statusArr.length ? null : (
+        {!monster.statuses.length ? null : (
           <div className="status-row">
-            <span className="status-list">{statusArr.join(" - ")}</span>
+            <span className="status-list">{monster.statuses.join(" - ")}</span>
             <button
               className="btn-reset-status"
-              onClick={() => setStatusArr([])}
+              onClick={() => onChangeMonster(monster.id, "statuses", [])}
             >
               clear
             </button>
@@ -143,7 +145,7 @@ export function Monster({
                   status={stat}
                   onAddStatus={handleAddStatus}
                   onDeleteStatus={handleDeleteStatus}
-                  statusArr={statusArr}
+                  statuses={monster.statuses}
                   key={stat}
                 />
               ))}

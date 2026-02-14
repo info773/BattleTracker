@@ -10,6 +10,7 @@ export const initialMonsters = [
     hp: "35",
     isPlayer: false,
     id: 1,
+    notes: "note-bandit",
   },
   {
     name: "water-elemental",
@@ -17,6 +18,7 @@ export const initialMonsters = [
     hp: "76",
     isPlayer: false,
     id: 2,
+    notes: "note-water elemental",
   },
   {
     name: "adult-bronze-dragon",
@@ -24,6 +26,7 @@ export const initialMonsters = [
     hp: "166",
     isPlayer: false,
     id: 3,
+    notes: "note-dragon",
   },
 ];
 

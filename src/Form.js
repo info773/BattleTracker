@@ -29,6 +29,7 @@ export function Form({ onAddMonster }) {
       hp: Number(hpMonster),
       isPlayer: false,
       id: id,
+      notes: "",
     };
 
     onAddMonster(newMonster);
@@ -53,6 +54,7 @@ export function Form({ onAddMonster }) {
       hp: 1,
       isPlayer: true,
       id: id,
+      notes: "",
     };
 
     onAddMonster(newPlayer);

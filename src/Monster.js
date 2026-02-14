@@ -28,7 +28,6 @@ export function Monster({
 }) {
   const [calcVal, setCalcVal] = useState("0");
   const [notesActive, setNotesActive] = useState(false);
-  const [notes, setNotes] = useState("");
   const [statusArr, setStatusArr] = useState([]);
 
   const isDead = monster.hp <= 0;
@@ -110,7 +109,7 @@ export function Monster({
             </div>
           ) : null}
           <button onClick={() => setNotesActive((notesActive) => !notesActive)}>
-            {notesActive ? "⬆" : notes.length === 0 ? "..." : "!!!"}
+            {notesActive ? "⬆" : monster.notes.length === 0 ? "..." : "!!!"}
           </button>
         </div>
         {!statusArr.length ? null : (
@@ -133,8 +132,10 @@ export function Monster({
               className="notes"
               name=""
               id=""
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
+              value={monster.notes}
+              onChange={(e) =>
+                onChangeMonster(monster.id, "notes", e.target.value)
+              }
             />
             <div className="checkboxes">
               {statusEffects.map((stat) => (

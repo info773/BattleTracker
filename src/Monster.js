@@ -84,6 +84,9 @@ export function Monster({
               />
             ) : null}
           </div>
+
+          {/* Calc */}
+
           {!monster.isPlayer ? (
             <div className="monster-calc">
               <button
@@ -110,10 +113,16 @@ export function Monster({
               </button>
             </div>
           ) : null}
+
+          {/* Collapse Button */}
+
           <button onClick={() => setNotesActive((notesActive) => !notesActive)}>
             {notesActive ? "⬆" : monster.notes.length === 0 ? "..." : "!!!"}
           </button>
         </div>
+
+        {/* Status */}
+
         {!monster.statuses.length ? null : (
           <div className="status-row">
             <span className="status-list">{monster.statuses.join(" - ")}</span>
@@ -126,9 +135,12 @@ export function Monster({
           </div>
         )}
       </div>
+
+      {/* Notes */}
+
       {notesActive ? (
         <>
-          <MonsterAPI monsterName={transformedName} />
+          {!monster.isPlayer && <MonsterAPI monsterName={transformedName} />}
           <div className="more-info">
             <textarea
               className="notes"

@@ -111,7 +111,7 @@ code {
   padding: 6px 8px;
   text-align: left;
   vertical-align: top;
-  resize: vertical;
+  resize: both;
 }
 
 .checkboxes {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function Form({ onAddMonster }) {
   const [nameMonster, setNameMonster] = useState("");
@@ -9,6 +9,12 @@ export function Form({ onAddMonster }) {
 
   const [namePlayer, setNamePlayer] = useState("");
   const [initPlayer, setInitPlayer] = useState("");
+
+  const focusEl = useRef(null);
+
+  useEffect(function () {
+    focusEl.current.focus();
+  }, []);
 
   function handleSubmitMonster(e) {
     e.preventDefault();
@@ -37,6 +43,7 @@ export function Form({ onAddMonster }) {
     setNameMonster("");
     setInitMonster("");
     setHpMonster("");
+    focusEl.current.focus();
   }
 
   function handleSubmitPlayer(e) {
@@ -62,6 +69,7 @@ export function Form({ onAddMonster }) {
     onAddMonster(newPlayer);
     setNamePlayer("");
     setInitPlayer("");
+    focusEl.current.focus();
   }
 
   return (
@@ -89,6 +97,7 @@ export function Form({ onAddMonster }) {
               value={nameMonster}
               onChange={(e) => setNameMonster(e.target.value)}
               className="input-name"
+              ref={focusEl}
             />
             <input
               type="text"
@@ -115,6 +124,7 @@ export function Form({ onAddMonster }) {
               value={namePlayer}
               onChange={(e) => setNamePlayer(e.target.value)}
               className="input-name"
+              ref={focusEl}
             />
             <input
               type="text"

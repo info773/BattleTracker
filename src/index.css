@@ -192,6 +192,13 @@ code {
   display: flex;
   gap: 8px;
   margin: 24px 50px;
+  align-items: center;
+}
+
+.io-actions__right {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
 }
 
 .io-actions--fixed {

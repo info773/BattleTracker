@@ -1,7 +1,7 @@
-import { useState } from "react";
 import { Form } from "./Form";
 import { Logo } from "./Logo";
 import { Tracker } from "./Tracker";
+import { useLocalStorageState } from "./useLocalStorageState";
 
 export const initialMonsters = [
   {
@@ -43,7 +43,11 @@ export const initialMonsters = [
 ];
 
 export default function App() {
-  const [monsters, setMonsters] = useState(initialMonsters);
+  // const [monsters, setMonsters] = useState(initialMonsters);
+  const [monsters, setMonsters] = useLocalStorageState(
+    initialMonsters,
+    "monsters",
+  );
 
   function handleExport() {
     const data = JSON.stringify(monsters, null, 2);
@@ -107,6 +111,11 @@ export default function App() {
     );
   }
 
+  function handleClearStorage(type) {
+    localStorage.removeItem("monsters");
+    setMonsters(type); // or [] if you want empty
+  }
+
   return (
     <div className="app">
       <Logo />
@@ -129,6 +138,17 @@ export default function App() {
             onChange={handleImport}
           />
         </label>
+        <div className="io-actions__right">
+          <button className="action-btn" onClick={() => handleClearStorage([])}>
+            clear
+          </button>
+          <button
+            className="action-btn"
+            onClick={() => handleClearStorage(initialMonsters)}
+          >
+            default
+          </button>
+        </div>
       </div>
     </div>
   );
